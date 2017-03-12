@@ -35,5 +35,30 @@ namespace teht01
             //disable debugging
             App.Current.DebugSettings.EnableFrameRateCounter = false;
         }
+        private void Draw_Click(object sender, RoutedEventArgs e)
+        {
+            int RowsAmount;
+            try
+            {
+                RowsAmount = int.Parse(NumberOfDrawsTextBox.Text);
+            }
+            catch
+            {
+                RowsAmount = 0;
+            }
+            if (RowsAmount != 0)
+            {
+                Lotto Lottery = new Lotto();
+                string Rows = Lottery.GetRows(RowsAmount);
+                DrawsTextBlock.Text += Rows + System.Environment.NewLine;
+            }
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            DrawsTextBlock.Text = "";
+        }
+
     }
-}
+    }
+
